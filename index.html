@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AravinthSamy — MERN Stack Developer Portfolio</title>
+<meta name="description" content="Portfolio of Alex Carter, a MERN stack developer building fast, scalable web apps with React, Node.js and MongoDB." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dark">
+
+<!-- NAVBAR -->
+<header id="navbar" class="navbar">
+  <nav class="container nav">
+    <a href="#home" class="brand">
+      <span class="brand-badge"><i class="icon-code-2"></i></span>
+      <span class="text-gradient">dev.alex</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"><i id="themeIcon" class="icon-sun"></i></button>
+      <button id="menuToggle" class="icon-btn mobile-only" aria-label="Menu"><i class="icon-menu"></i></button>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="mobile-menu hidden">
+    <a href="#home" class="m-link active">Home</a>
+    <a href="#about" class="m-link">About</a>
+    <a href="#skills" class="m-link">Skills</a>
+    <a href="#projects" class="m-link">Projects</a>
+    <a href="#contact" class="m-link">Contact</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="reveal-left">
+      <div class="badge"><span class="dot"></span> Available for work</div>
+      <h1 class="hero-title">Hi, I'm <span class="text-gradient">Alex Carter</span></h1>
+      <div class="typewriter mono"><span id="typed"></span><span class="cursor">|</span></div>
+      <p class="hero-desc">I architect performant web experiences with the MERN stack — turning complex ideas into clean, scalable products that people love to use.</p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View My Work <i class="icon-arrow-down"></i></a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com" target="_blank" rel="noreferrer" class="icon-btn" aria-label="GitHub"><i class="icon-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="icon-btn" aria-label="LinkedIn"><i class="icon-linkedin"></i></a>
+        <a href="mailto:hello@example.com" class="icon-btn" aria-label="Email"><i class="icon-mail"></i></a>
+      </div>
+    </div>
+    <div class="reveal-right hero-image-wrap">
+      <div class="float">
+        <div class="image-glow"></div>
+        <div class="image-frame glass">
+          <img src="assets/profile.jpg" alt="Alex Carter, MERN stack developer" />
+        </div>
+        <div class="floating-card bottom-left mono">
+          <div class="muted">&lt;status&gt;</div>
+          <div class="accent">building cool stuff</div>
+        </div>
+        <div class="floating-card top-right mono">
+          <div class="muted">years_exp</div>
+          <div class="accent big">5+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="eyebrow">01 — About</div>
+      <h2>A developer who cares about the details.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a full-stack engineer specialized in the <strong>MERN stack</strong> — MongoDB, Express, React, Node.js. For the past 5 years I've helped startups and established teams ship products that feel fast, look sharp, and scale calmly.</p>
+        <p>I love the messy middle of building software: turning fuzzy ideas into typed APIs, designing component systems that survive growth, and squeezing milliseconds out of render paths. When I'm offline, you'll find me bouldering or roasting coffee.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat glass"><div class="stat-icon"><i class="icon-rocket"></i></div><div><div class="stat-value">40+</div><div class="stat-label">Projects Shipped</div></div></div>
+        <div class="stat glass"><div class="stat-icon"><i class="icon-users"></i></div><div><div class="stat-value">25+</div><div class="stat-label">Happy Clients</div></div></div>
+        <div class="stat glass"><div class="stat-icon"><i class="icon-coffee"></i></div><div><div class="stat-value">∞</div><div class="stat-label">Cups of Coffee</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="eyebrow">02 — Skills</div>
+      <h2>The toolbox.</h2>
+      <p class="muted">Tools I reach for when shipping production-grade web apps.</p>
+    </div>
+    <div class="glass skills-card reveal" id="skillsCard">
+      <div class="skills-grid">
+        <!-- rings injected by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="eyebrow">03 — Projects</div>
+      <h2>Selected work.</h2>
+      <p class="muted">A few projects I've built recently.</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="eyebrow">04 — Contact</div>
+      <h2>Let's build something.</h2>
+      <p class="muted">Have a project in mind? Drop a message.</p>
+    </div>
+    <form id="contactForm" class="glass contact-form reveal">
+      <div class="form-row">
+        <input required name="name" placeholder="Your name" />
+        <input required type="email" name="email" placeholder="Your email" />
+      </div>
+      <input required name="subject" placeholder="Subject" />
+      <textarea required name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+      <button type="submit" class="btn btn-primary">Send Message <i class="icon-send"></i></button>
+    </form>
+    <div id="toast" class="toast hidden"></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="muted">© <span id="year"></span> Alex Carter — Built with HTML, CSS &amp; JS.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
