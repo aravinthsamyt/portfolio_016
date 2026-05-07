@@ -1,9 +1,13 @@
 // ===== Title Card Animation =====
 const titleCard = document.getElementById('titleCard');
 if (titleCard) {
+  let duration = 5000; // Default for desktop
+  if (window.innerWidth <= 768) duration = 4000; // Tablet
+  if (window.innerWidth <= 480) duration = 3500; // Mobile
+  
   setTimeout(() => {
     titleCard.classList.add('remove');
-  }, 5000); // Remove after 5 seconds (duration of animation)
+  }, duration);
 }
 
 // ===== Theme toggle =====
