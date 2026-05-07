@@ -1,3 +1,11 @@
+// ===== Title Card Animation =====
+const titleCard = document.getElementById('titleCard');
+if (titleCard) {
+  setTimeout(() => {
+    titleCard.classList.add('remove');
+  }, 5000); // Remove after 5 seconds (duration of animation)
+}
+
 // ===== Theme toggle =====
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
@@ -20,7 +28,7 @@ window.addEventListener('scroll', onScroll);
 onScroll();
 
 // ===== Smooth scroll + active link =====
-const sections = ['home','about','skills','projects','contact'];
+const sections = ['home','about','achievements','skills','projects','certification','contact'];
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href').slice(1);
