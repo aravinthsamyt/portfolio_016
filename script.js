@@ -182,5 +182,48 @@ form.addEventListener('submit', (e) => {
   setTimeout(() => toast.classList.add('hidden'), 3500);
 });
 
+// ===== Achievements =====
+const achievements = [
+  {
+    name: 'ReactJS Certification',
+    location: 'Udemy',
+    year: 2025,
+    img: 'assets/achievement1.jpg',
+    linkedin: 'https://linkedin.com'
+  },
+  {
+    name: 'MERN Stack Mastery',
+    location: 'Coursera',
+    year: 2025,
+    img: 'assets/achievement2.jpg',
+    linkedin: 'https://linkedin.com'
+  }
+];
+
+const achievementsContainer = document.getElementById('achievementsContainer');
+const achievementsGrid = document.createElement('div');
+achievementsGrid.className = 'achievements-grid';
+
+achievements.forEach(achievement => {
+  const card = document.createElement('article');
+  card.className = 'project reveal';
+  card.innerHTML = `
+    <div class="project-img">
+      <img src="${achievement.img}" alt="${achievement.name}" loading="lazy"/>
+      <div class="project-overlay">
+        <a class="btn btn-primary" href="${achievement.linkedin}" target="_blank" rel="noreferrer"><i class="icon-external-link"></i> View on LinkedIn</a>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3 class="project-title">${achievement.name}</h3>
+      <p class="project-desc">${achievement.location} • ${achievement.year}</p>
+      <div class="tech"></div>
+    </div>`;
+  achievementsGrid.appendChild(card);
+  revealObs.observe(card);
+});
+
+achievementsContainer.appendChild(achievementsGrid);
+
 // ===== Footer year =====
 document.getElementById('year').textContent = new Date().getFullYear();
