@@ -188,14 +188,14 @@ const achievements = [
     name: 'ReactJS Certification',
     location: 'Udemy',
     year: 2025,
-    img: 'assets/achievement1.jpg',
+    img: 'assets/EEEhackathon.jpeg',
     linkedin: 'https://linkedin.com'
   },
   {
     name: 'MERN Stack Mastery',
     location: 'Coursera',
     year: 2025,
-    img: 'assets/achievement2.jpg',
+    img: 'assets/ECEhackathon.jpeg',
     linkedin: 'https://linkedin.com'
   }
 ];
