@@ -353,11 +353,16 @@ img { max-width: 100%; display: block; }
   font-size: 1.05rem;
   line-height: 1;
 }
-.social-rail-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .04em;
+.leetcode-svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+}
+.leetcode-svg-hero {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  stroke: none;
 }
 .social-rail-label {
   position: absolute;
