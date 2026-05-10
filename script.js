@@ -76,55 +76,89 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
 
-// ===== Skills (animated rings) =====
-const skills = [
-  { name: 'React', value: 95 },
-  { name: 'Node.js', value: 90 },
-  { name: 'MongoDB', value: 85 },
-  { name: 'Express', value: 88 },
-  { name: 'TypeScript', value: 92 },
-  { name: 'Next.js', value: 80 },
-  { name: 'Tailwind', value: 95 },
-  { name: 'GraphQL', value: 75 },
+// ===== Skills =====
+const skillStacks = [
+  {
+    title: 'Frontend',
+    count: 6,
+    items: [
+      { name: 'HTML5', iconUrl: 'https://cdn.simpleicons.org/html5/E34F26' },
+      { name: 'CSS3', iconUrl: 'https://cdn.simpleicons.org/css/1572B6' },
+      { name: 'JavaScript', iconUrl: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+      { name: 'React.js', iconUrl: 'https://cdn.simpleicons.org/react/61DAFB' },
+      { name: 'Next.js', iconUrl: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF' },
+      { name: 'Tailwind CSS', iconUrl: 'https://cdn.simpleicons.org/tailwindcss/38BDF8' },
+    ],
+  },
+  {
+    title: 'Backend',
+    count: 4,
+    items: [
+      { name: 'Node.js', iconUrl: 'https://cdn.simpleicons.org/nodedotjs/68A063' },
+      { name: 'Express.js', iconUrl: 'https://cdn.simpleicons.org/express/FFFFFF' },
+      { name: 'REST API', iconUrl: 'https://cdn.simpleicons.org/openapiinitiative/6BA539' },
+      { name: 'JWT / OAuth', iconUrl: 'https://cdn.simpleicons.org/auth0/EB5424' },
+    ],
+  },
+  {
+    title: 'Database',
+    count: 4,
+    items: [
+      { name: 'MongoDB', iconUrl: 'https://cdn.simpleicons.org/mongodb/47A248' },
+      { name: 'MySQL', iconUrl: 'https://cdn.simpleicons.org/mysql/00758F' },
+      { name: 'PostgreSQL', iconUrl: 'https://cdn.simpleicons.org/postgresql/336791' },
+      { name: 'Firebase', iconUrl: 'https://cdn.simpleicons.org/firebase/FFCA28' },
+    ],
+  },
+  {
+    title: 'Tools & Platforms',
+    count: 6,
+    items: [
+      { name: 'Git', iconUrl: 'https://cdn.simpleicons.org/git/F05032' },
+      { name: 'GitHub', iconUrl: 'https://cdn.simpleicons.org/github/FFFFFF' },
+      { name: 'VS Code', iconUrl: 'https://cdn.simpleicons.org/visualstudiocode/007ACC' },
+      { name: 'Postman', iconUrl: 'https://cdn.simpleicons.org/postman/FF6C37' },
+      { name: 'Firebase', iconUrl: 'https://cdn.simpleicons.org/firebase/FFCA28' },
+      { name: 'Vercel', iconUrl: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
+    ],
+  },
+  {
+    title: 'Programming Languages',
+    count: 4,
+    items: [
+      { name: 'JavaScript', iconUrl: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+      { name: 'Python', iconUrl: 'https://cdn.simpleicons.org/python/3776AB' },
+      { name: 'Java', iconUrl: 'https://cdn-icons-png.flaticon.com/512/226/226777.png' },
+      { name: 'C', iconUrl: 'https://cdn.simpleicons.org/c/00599C' },
+    ],
+  },
 ];
-const skillsCard = document.getElementById('skillsCard');
-const skillsGrid = skillsCard.querySelector('.skills-grid');
-const r = 42, c = 2 * Math.PI * r;
-skills.forEach((s, idx) => {
-  const wrap = document.createElement('div');
-  wrap.className = 'ring';
-  wrap.innerHTML = `
-    <div class="ring-svg">
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--border)" stroke-width="6"/>
-        <circle class="progress" cx="50" cy="50" r="${r}" fill="none" stroke="url(#g${idx})" stroke-width="6" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}"/>
-        <defs><linearGradient id="g${idx}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--primary)"/><stop offset="100%" stop-color="var(--primary-glow)"/></linearGradient></defs>
-      </svg>
-      <div class="ring-value" data-target="${s.value}">0%</div>
-    </div>
-    <div class="ring-name">${s.name}</div>`;
-  skillsGrid.appendChild(wrap);
-});
 
-const skillsObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    skillsCard.querySelectorAll('.ring').forEach((ring, i) => {
-      const val = skills[i].value;
-      const offset = c - (val / 100) * c;
-      ring.querySelector('.progress').style.strokeDashoffset = offset;
-      const valEl = ring.querySelector('.ring-value');
-      let n = 0;
-      const step = Math.max(1, Math.round(val / 30));
-      const id = setInterval(() => {
-        n += step; if (n >= val) { n = val; clearInterval(id); }
-        valEl.textContent = n + '%';
-      }, 50);
-    });
-    skillsObs.disconnect();
-  });
-}, { threshold: 0.25 });
-skillsObs.observe(skillsCard);
+const skillStacksContainer = document.getElementById('skillStacks');
+if (skillStacksContainer) {
+  skillStacksContainer.innerHTML = skillStacks.map((stack, stackIndex) => `
+    <article class="skill-stack-card glass reveal">
+      <div class="skill-stack-head">
+        <h3>${stack.title}</h3>
+        <span>${stack.count} tools</span>
+      </div>
+      <div class="skill-tile-grid">
+        ${stack.items.map((skill, skillIndex) => {
+          const fallbackLabel = (skill.name || '').slice(0, 2).toUpperCase();
+          return `
+          <div class="skill-tile">
+            <div class="skill-icon-wrap">
+              <img class="skill-icon" src="${skill.iconUrl}" alt="${skill.name} logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="skill-icon-fallback" style="display:none;">${fallbackLabel}</span>
+            </div>
+            <span>${skill.name}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </article>
+  `).join('');
+  skillStacksContainer.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}
 
 // ===== Projects =====
 const projects = [
