@@ -185,18 +185,24 @@ form.addEventListener('submit', (e) => {
 // ===== Achievements =====
 const achievements = [
   {
-    name: 'ReactJS Certification',
-    location: 'Udemy',
+    name: 'Electroathon Hackathon',
+    location: 'EEE Department KEC',
     year: 2025,
     img: 'assets/EEEhackathon.jpeg',
-    linkedin: 'https://linkedin.com'
+    linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7431355310453460992/'
   },
   {
+    name: '30 hrs Hackathon',
+    location: 'ECE Department KEC',
+    year: 2025,
+    img: 'assets/ECEhackathon.jpeg',
+    linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7436095828579991553/'
+  },{
     name: 'MERN Stack Mastery',
     location: 'Coursera',
     year: 2025,
-    img: 'assets/ECEhackathon.jpeg',
-    linkedin: 'https://linkedin.com'
+    img: 'assets/loading1.jpeg',
+    linkedin: ''
   }
 ];
 
@@ -204,10 +210,13 @@ const achievementsContainer = document.getElementById('achievementsContainer');
 const achievementsGrid = document.createElement('div');
 achievementsGrid.className = 'achievements-grid';
 
-achievements.forEach(achievement => {
+achievements.forEach((achievement, idx) => {
   const card = document.createElement('article');
   card.className = 'project reveal';
+  // add a small award badge to the first two achievements (use Remix Icon)
+  const awardBadge = (idx < 2) ? `<div class="award-badge"><i class="ri-award-line award-icon"></i>1st Prize</div>` : '';
   card.innerHTML = `
+    ${awardBadge}
     <div class="project-img">
       <img src="${achievement.img}" alt="${achievement.name}" loading="lazy"/>
       <div class="project-overlay">
