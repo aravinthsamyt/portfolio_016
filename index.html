@@ -190,10 +190,34 @@
       <h2>Credentials and learning.</h2>
       <p class="muted">Certifications and professional development.</p>
     </div>
-    <div class="glass reveal" id="certificationCard">
-      <!-- certifications content -->
+    
+      <div class="cert-grid">
+        <article class="cert-card glass">
+          <div class="cert-img">
+            <img src="assets/certificate/Java_badge.png" alt="Java Certificate">
+          </div>
+          <div class="cert-body">
+            <div class="cert-provider">Oracle</div>
+            <div class="cert-category">Java Foundation Associate Developer</div>
+            <div class="cert-desc muted">Completed an in-depth course covering core Java concepts, OOP, and standard libraries.</div>
+            <div class="cert-footer"><i class="ri-calendar-line"></i><span> May 2024</span></div>
+          </div>
+        </article>
+
+        <article class="cert-card glass">
+          <div class="cert-img">
+            <img src="assets/certificate/STM32.jpeg" alt="STM32 Certificate">
+          </div>
+          <div class="cert-body">
+            <div class="cert-provider">STMicroelectronics</div>
+            <div class="cert-category">STM32 Embedded Systems</div>
+            <div class="cert-desc muted">Hands-on training in STM32 microcontrollers, peripheral programming and embedded firmware design.</div>
+            <div class="cert-footer"><i class="ri-calendar-line"></i><span> Nov 2023</span></div>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
+  
 </section>
 
 <!-- CONTACT -->
@@ -204,15 +228,45 @@
       <h2>Let's build something.</h2>
       <p class="muted">Have a project in mind? Drop a message.</p>
     </div>
-    <form id="contactForm" class="glass contact-form reveal">
-      <div class="form-row">
-        <input required name="name" placeholder="Your name" />
-        <input required type="email" name="email" placeholder="Your email" />
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="map glass">
+          <iframe src="https://maps.google.com/maps?q=Kongu%20Engineering%20College&z=15&output=embed" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="contact-boxes">
+          <div class="contact-box glass">
+            <div class="box-icon"><i class="ri-phone-fill"></i></div>
+            <div class="box-content">
+              <div class="box-label">Mobile</div>
+              <div class="box-value">9600676638</div>
+              <div class="box-note muted">Quickest for urgent queries</div>
+            </div>
+          </div>
+
+          <div class="contact-box glass">
+            <div class="box-icon"><i class="ri-mail-fill"></i></div>
+            <div class="box-content">
+              <div class="box-label">Email</div>
+              <div class="box-value">aravinthtamil2005@gmail.com</div>
+              <div class="box-note muted">Best for project details</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <input required name="subject" placeholder="Subject" />
-      <textarea required name="message" rows="5" placeholder="Tell me about your project..."></textarea>
-      <button type="submit" class="btn btn-primary">Send Message <i class="icon-send"></i></button>
-    </form>
+
+      <div class="contact-right">
+        <form id="contactForm" class="glass contact-form reveal">
+          <div class="form-row">
+            <input required name="name" placeholder="Your name" />
+            <input required type="email" name="email" placeholder="Your email" />
+          </div>
+          <input required name="subject" placeholder="Subject" />
+          <textarea required name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+          <button type="submit" class="btn btn-primary">Send Message <i class="icon-send"></i></button>
+        </form>
+      </div>
+    </div>
+
     <div id="toast" class="toast hidden"></div>
   </div>
 </section>
