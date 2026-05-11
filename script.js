@@ -167,6 +167,7 @@ const projects = [
     desc: 'A smart charging analysis system designed to monitor and analyze EV charging performance and efficiency.Provides real-time insights, data visualization, and optimized charging statistics using interactive dashboards.',
     img: 'assets/projects/zeon_charge.jpeg',
     tech: ['React','Tailwind CSS', 'Node.js', 'Firebase', 'TypeScript'],
+    duration: 'Jan 2025-March 2025',
     demo: '#', code: '#'
   },
   {
@@ -174,6 +175,7 @@ const projects = [
     desc: 'An image-processing based application developed to detect defects in fabrics automatically for quality assurance.Uses computer vision techniques to identify irregularities and improve manufacturing inspection accuracy.',
     img: 'assets/projects/fabric_project.png',
     tech: ['React', 'Tailwind CSS', 'PyTorch','Python', 'Firebase','OpenCV'],
+    duration: 'Feb 2025-Apr 2025',
     demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/fabric_project'
   },
   {
@@ -181,6 +183,7 @@ const projects = [
     desc: 'A full-stack blogging platform where users can create, edit, and publish articles with a clean and responsive interface.Implemented authentication, dynamic content management, and modern UI features for a smooth user experience.',
     img: 'assets/projects/blog.png',
     tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
+    duration: 'Nov 2024-Jan 2025',
     demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/blogging'
   },
   {
@@ -188,6 +191,7 @@ const projects = [
     desc: 'A modern single-page resume website built to showcase skills, projects, and achievements in a professional layout.Designed with responsive UI and smooth navigation for an engaging portfolio experience.',
     img: 'assets/projects/singlepage_cv.png',
     tech: ['HTML', 'CSS'],
+    duration: 'Oct 2024-Nov 2024',
     demo: '#', code: '#'
   },
   {
@@ -195,6 +199,7 @@ const projects = [
     desc: 'An animated timeline website built using HTML and CSS to showcase the historical evolution of cars and bikes through different eras.Features smooth animations and interactive visual transitions to present vehicle milestones and establishment years in an engaging way.',
     img: 'assets/projects/changelog.png',
     tech: ['HTML', 'CSS'],
+    duration: 'Sep 2024-Oct 2024',
     demo: '#', code: '#'
   },
   {
@@ -202,6 +207,7 @@ const projects = [
     desc: 'A responsive calculator application capable of performing basic arithmetic and scientific operations efficiently.Designed with an intuitive interface and optimized logic for accurate real-time calculations.',
     img: 'assets/projects/calculator.png',
     tech: ['HTML', 'CSS', 'JavaScript'],
+    duration: 'Aug 2024-Sep 2024',
     demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/calculator'
   },
 ];
@@ -212,15 +218,18 @@ projects.forEach(p => {
   card.innerHTML = `
     <div class="project-img">
       <img src="${p.img}" alt="${p.title}" loading="lazy"/>
-      <div class="project-overlay">
-        <a class="btn btn-primary" href="${p.demo}" target="_blank" rel="noreferrer"><i class="icon-external-link"></i> Live Demo</a>
-        <a class="btn btn-outline" href="${p.code}" target="_blank" rel="noreferrer"><i class="icon-github"></i> GitHub</a>
-      </div>
     </div>
     <div class="project-body">
-      <h3 class="project-title">${p.title}</h3>
+      <div class="project-title-row">
+        <h3 class="project-title">${p.title}</h3>
+        <a class="btn btn-icon live-demo" href="${p.demo}" target="_blank" rel="noreferrer" title="Live demo"><i class="icon-external-link"></i></a>
+      </div>
       <p class="project-desc">${p.desc}</p>
       <div class="tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
+      <div class="project-meta">
+        <div class="project-date"><i class="icon-calendar"></i><span>${p.duration || 'Jan 2025-March 2025'}</span></div>
+        <a class="github-link" href="${p.code}" target="_blank" rel="noreferrer" title="View on GitHub"><i class="ri-github-fill"></i></a>
+      </div>
     </div>`;
   grid.appendChild(card);
   revealObs.observe(card);
