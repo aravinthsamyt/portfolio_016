@@ -163,25 +163,46 @@ if (skillStacksContainer) {
 // ===== Projects =====
 const projects = [
   {
-    title: 'NovaCommerce',
-    desc: 'Full-stack e-commerce platform with real-time inventory, Stripe checkout and a custom admin dashboard.',
-    img: 'assets/project1.jpg',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    title: 'EV charge Analyser',
+    desc: 'A smart charging analysis system designed to monitor and analyze EV charging performance and efficiency.Provides real-time insights, data visualization, and optimized charging statistics using interactive dashboards.',
+    img: 'assets/projects/zeon_charge.jpeg',
+    tech: ['React','Tailwind CSS', 'Node.js', 'Firebase', 'TypeScript'],
     demo: '#', code: '#'
   },
   {
-    title: 'PulseChat',
-    desc: 'Realtime chat application with end-to-end encryption, presence indicators and rich media sharing.',
-    img: 'assets/project2.jpg',
-    tech: ['Next.js', 'Socket.io', 'Express', 'Redis'],
+    title: 'Fabric Defect Detection',
+    desc: 'An image-processing based application developed to detect defects in fabrics automatically for quality assurance.Uses computer vision techniques to identify irregularities and improve manufacturing inspection accuracy.',
+    img: 'assets/projects/fabric_project.png',
+    tech: ['React', 'Tailwind CSS', 'PyTorch','Python', 'Firebase','OpenCV'],
+    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/fabric_project'
+  },
+  {
+    title: 'Blog space',
+    desc: 'A full-stack blogging platform where users can create, edit, and publish articles with a clean and responsive interface.Implemented authentication, dynamic content management, and modern UI features for a smooth user experience.',
+    img: 'assets/projects/blog.png',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
+    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/blogging'
+  },
+  {
+    title: 'Single page CV',
+    desc: 'A modern single-page resume website built to showcase skills, projects, and achievements in a professional layout.Designed with responsive UI and smooth navigation for an engaging portfolio experience.',
+    img: 'assets/projects/singlepage_cv.png',
+    tech: ['HTML', 'CSS'],
     demo: '#', code: '#'
   },
   {
-    title: 'TaskOrbit',
-    desc: 'Project management tool with drag-and-drop boards, team workspaces and granular permissions.',
-    img: 'assets/project3.jpg',
-    tech: ['React', 'TypeScript', 'GraphQL', 'PostgreSQL'],
+    title: 'Changelog',
+    desc: 'An animated timeline website built using HTML and CSS to showcase the historical evolution of cars and bikes through different eras.Features smooth animations and interactive visual transitions to present vehicle milestones and establishment years in an engaging way.',
+    img: 'assets/projects/changelog.png',
+    tech: ['HTML', 'CSS'],
     demo: '#', code: '#'
+  },
+  {
+    title: 'Calculator',
+    desc: 'A responsive calculator application capable of performing basic arithmetic and scientific operations efficiently.Designed with an intuitive interface and optimized logic for accurate real-time calculations.',
+    img: 'assets/projects/calculator.png',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/calculator'
   },
 ];
 const grid = document.getElementById('projectsGrid');

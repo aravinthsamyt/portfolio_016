@@ -654,11 +654,18 @@ img { max-width: 100%; display: block; }
 /* Skills */
 .skill-stack-grid {
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  --skill-stack-gap: 1.25rem;
+  gap: var(--skill-stack-gap);
 }
 .skill-stack-card {
   padding: 1.25rem;
   border-radius: 1.25rem;
+}
+.skill-stack-card:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, calc((100% - var(--skill-stack-gap)) / 2));
 }
 .skill-stack-head {
   display: flex;
@@ -755,6 +762,18 @@ img { max-width: 100%; display: block; }
 @media (max-width: 720px) {
   .skill-tile-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-stack-card:last-child {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
   }
 }
 
