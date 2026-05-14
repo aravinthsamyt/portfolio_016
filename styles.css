@@ -115,6 +115,91 @@
     object-position: center 15%;
   }
 }
+
+/* ===== Cherry Blossom Petals Animation ===== */
+  @keyframes rosePetalFall {
+  0% {
+      transform: translateY(-100px) rotateZ(var(--rotate)) rotateX(45deg) scale(1);
+    opacity: 0;
+  }
+  5% {
+      opacity: 0.8;
+  }
+  50% {
+      opacity: 1;
+  }
+  90% {
+      opacity: 0.8;
+  }
+  100% {
+      transform: translateY(100vh) rotateZ(calc(var(--rotate) + 720deg)) rotateX(45deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+  .rose-petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+    z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+  .rose-petal {
+  position: absolute;
+  top: -50px;
+  left: calc(var(--x-offset));
+    width: 14px;
+    height: 18px;
+    background: radial-gradient(ellipse at 40% 30%, hsl(348 92% 55% / 0.95), hsl(348 88% 45% / 0.8));
+    border-radius: 50% 50% 50% 30%;
+    filter: drop-shadow(0 1px 3px hsl(0 0% 0% / 0.12));
+  will-change: transform, opacity;
+    animation: rosePetalFall linear var(--duration) var(--delay) infinite;
+    transform-origin: center center -8px;
+    box-shadow: inset 0 1px 2px hsl(0 0% 100% / 0.2), inset -1px -1px 2px hsl(0 0% 0% / 0.15);
+}
+
+  .rose-petal::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+    background: radial-gradient(ellipse at 35% 25%, hsl(0 0% 100% / 0.5), transparent 65%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+  body:not(.dark) .rose-petal {
+    background: radial-gradient(ellipse at 40% 30%, hsl(348 96% 60% / 0.9), hsl(348 92% 50% / 0.75));
+    filter: drop-shadow(0 1px 2px hsl(0 0% 0% / 0.1));
+}
+
+  body:not(.dark) .rose-petals-container {
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .rose-petal {
+      width: 12px;
+      height: 16px;
+  }
+
+    .rose-petal::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rose-petal {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 body.dark {
   --bg: hsl(222 47% 5%);
   --fg: hsl(210 40% 98%);
