@@ -251,6 +251,7 @@ const achievements = [
   {
     name: 'Electroathon Hackathon',
     location: 'EEE Department KEC',
+    date: 'May 2025',
     year: 2025,
     img: 'assets/EEEhackathon.jpeg',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7431355310453460992/'
@@ -258,12 +259,14 @@ const achievements = [
   {
     name: '30 hrs Hackathon',
     location: 'ECE Department KEC',
+    date: 'June 2025',
     year: 2025,
     img: 'assets/ECEhackathon.jpeg',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7436095828579991553/'
   },{
     name: 'MERN Stack Mastery',
     location: 'Coursera',
+    date: 'July 2025',
     year: 2025,
     img: 'assets/loading1.jpeg',
     linkedin: ''
@@ -278,19 +281,26 @@ achievements.forEach((achievement, idx) => {
   const card = document.createElement('article');
   card.className = 'project reveal';
   // add a small award badge to the first two achievements (use Remix Icon)
-  const awardBadge = (idx < 2) ? `<div class="award-badge"><i class="ri-award-line award-icon"></i>1st Prize</div>` : '';
+  const awardBadge = (idx < 2) ? `<div class="award-badge"><span class="award-icon award-emoji" aria-hidden="true">🎀</span>1st Prize</div>` : '';
+  const linkedinBadge = achievement.linkedin
+    ? `<a class="achievement-pill achievement-link-pill" href="${achievement.linkedin}" target="_blank" rel="noreferrer"><i class="ri-linkedin-fill"></i><span>LinkedIn Post</span></a>`
+    : `<span class="achievement-pill achievement-link-pill is-static"><i class="ri-linkedin-fill"></i><span>LinkedIn Post</span></span>`;
   card.innerHTML = `
     ${awardBadge}
     <div class="project-img">
       <img src="${achievement.img}" alt="${achievement.name}" loading="lazy"/>
-      <div class="project-overlay">
-        <a class="btn btn-primary" href="${achievement.linkedin}" target="_blank" rel="noreferrer"><i class="icon-external-link"></i> View on LinkedIn</a>
-      </div>
+      
     </div>
     <div class="project-body">
-      <h3 class="project-title">${achievement.name}</h3>
-      <p class="project-desc">${achievement.location} • ${achievement.year}</p>
-      <div class="tech"></div>
+      <div class="project-title-row">
+        <h3 class="project-title">${achievement.name}</h3>
+      </div>
+      <p class="project-desc achievement-location">${achievement.location}</p>
+      <span class="achievement-underline" aria-hidden="true"></span>
+      <div class="achievement-footer">
+        <span class="achievement-pill achievement-date-pill"><i class="ri-calendar-line"></i><span>${achievement.date}</span></span>
+        ${linkedinBadge}
+      </div>
     </div>`;
   achievementsGrid.appendChild(card);
   revealObs.observe(card);
