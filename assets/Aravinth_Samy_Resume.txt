@@ -1,0 +1,29 @@
+Aravinth Samy
+Full Stack Developer
+
+PROFILE
+Full stack developer focused on building modern, responsive web applications with the MERN stack.
+
+SKILLS
+- React
+- Node.js
+- Express
+- MongoDB
+- JavaScript
+- HTML5
+- CSS3
+- Tailwind CSS
+- Firebase
+- OpenCV
+- Python
+- PyTorch
+
+HIGHLIGHTS
+- Designed and built responsive portfolio and resume-style web experiences.
+- Participated in hackathons and technical learning milestones.
+- Enjoys creating polished interfaces with smooth navigation and clean layout systems.
+
+CONTACT
+Phone: 9600676638
+Email: aravinthtamil2005@gmail.com
+Location: India
