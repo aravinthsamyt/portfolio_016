@@ -201,19 +201,22 @@
 }
 
 body.dark {
-  --bg: hsl(222 47% 5%);
-  --fg: hsl(210 40% 98%);
-  --muted: hsl(215 20% 65%);
-  --card: hsl(222 40% 8%);
-  --border: hsl(222 30% 18%);
-  --primary: hsl(186 100% 50%);
-  --primary-glow: hsl(186 100% 65%);
-  --glass-bg: hsl(222 40% 8% / 0.6);
-  --gradient-primary: linear-gradient(135deg, hsl(186 100% 50%), hsl(220 100% 60%));
-  --gradient-text: linear-gradient(135deg, hsl(210 40% 98%), hsl(186 100% 60%));
-  --gradient-hero: radial-gradient(ellipse at top, hsl(186 100% 50% / 0.18), transparent 60%);
-  --shadow-glow: 0 0 60px hsl(186 100% 50% / 0.4);
-  --shadow-card-hover: 0 20px 60px -10px hsl(186 100% 50% / 0.5);
+  --bg: hsl(0 0% 4%);
+  --fg: hsl(32 38% 93%);
+  --muted: hsl(31 18% 68%);
+  --card: hsl(0 0% 8%);
+  --border: hsl(36 35% 25% / 0.6);
+  --primary: hsl(39 68% 70%);
+  --primary-glow: hsl(39 86% 83%);
+  --primary-fg: hsl(0 0% 7%);
+  --glass-bg: hsl(0 0% 8% / 0.72);
+  --gradient-primary: linear-gradient(135deg, hsl(40 88% 77%), hsl(264 67% 79%));
+  --gradient-text: linear-gradient(135deg, hsl(39 82% 74%), hsl(33 46% 92%) 48%, hsl(262 65% 80%));
+  --gradient-hero: radial-gradient(circle at top, hsl(39 100% 70% / 0.16), transparent 55%), radial-gradient(circle at 82% 12%, hsl(262 70% 70% / 0.12), transparent 30%);
+  --shadow-glow: 0 0 54px hsl(39 90% 70% / 0.22);
+  --shadow-card: 0 16px 48px hsl(0 0% 0% / 0.42);
+  --shadow-card-hover: 0 24px 70px hsl(39 90% 70% / 0.16);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; 
@@ -226,6 +229,12 @@ body {
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
   transition: background .4s var(--ease), color .4s var(--ease);
+}
+body.dark {
+  background:
+    radial-gradient(circle at 20% 0%, hsl(39 82% 55% / 0.08), transparent 24%),
+    radial-gradient(circle at 80% 8%, hsl(262 70% 70% / 0.08), transparent 22%),
+    linear-gradient(180deg, hsl(0 0% 3%) 0%, hsl(0 0% 5%) 100%);
 }
 body:not(.dark) {
   background:
@@ -387,8 +396,8 @@ img { max-width: 100%; display: block; }
   transition: color .3s var(--ease); 
   cursor: pointer;
 }
-.nav-link:hover { color: rgb(248, 214, 131); }
-.nav-link.active { color: rgb(251, 210, 107); }
+.nav-link:hover { color: rgb(255, 255, 255); }
+.nav-link.active { color: rgb(255, 255, 255); }
 .nav-link::after {
   content: ''; 
   position: absolute;
@@ -404,6 +413,12 @@ img { max-width: 100%; display: block; }
 .nav-link:hover::after, .nav-link.active::after {
   transform: scaleX(1); 
   transform-origin: left;
+}
+body:not(.dark) .nav-link:hover { 
+  color: rgb(248, 214, 131); 
+}
+body:not(.dark) .nav-link.active { 
+  color: rgb(251, 210, 107); 
 }
 .nav-actions { display: flex; gap: .5rem; }
 .mobile-only { display: none; }
@@ -601,19 +616,29 @@ img { max-width: 100%; display: block; }
   color: var(--muted); 
   min-height: 2.5rem;
 }
-.cursor { color: var(--primary); 
+.cursor { 
+  color: var(--primary); 
   margin-left: 2px; 
   animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
-.hero-desc { margin-top: 1.25rem; 
+.hero-desc { 
+  margin-top: 1.25rem; 
   max-width: 32rem; 
-  color: var(--muted); 
-  line-height: 1.6; }
-.cta-row { margin-top: 2rem; 
+  color:rgb(255, 255, 255); 
+  line-height: 1.6; 
+}
+body:not(.dark) .hero-desc {
+  color: rgb(60, 58, 58);
+  font-weight: 1000;
+  font-size: 17px;
+}
+.cta-row { 
+  margin-top: 2rem; 
   display: flex; 
   flex-wrap: wrap; 
   gap: 1rem; }
-.socials { margin-top: 2rem; 
+.socials { 
+  margin-top: 2rem; 
   display: flex; 
   gap: .65rem; }
 .socials a,
@@ -1723,7 +1748,306 @@ body:not(.dark) .contact-form textarea {
   }
 }
 .be{
+  color: rgb(240, 136, 250);
+  font-weight: 1000;
+  font-size: 17px;
+}
+body:not(.dark) .be {
   color: rgb(32, 112, 113);
   font-weight: 1000;
   font-size: 17px;
+}
+
+body.dark .glass {
+  background: hsl(0 0% 8% / 0.7);
+  border-color: hsl(36 35% 25% / 0.62);
+  box-shadow: 0 16px 50px hsl(0 0% 0% / 0.28);
+}
+
+body.dark .glass:hover {
+  border-color: hsl(39 68% 70% / 0.45);
+  box-shadow: var(--shadow-glow);
+}
+
+body.dark .hero-bg {
+  background:
+    radial-gradient(circle at 18% 22%, hsl(39 88% 62% / 0.12), transparent 0 2px, transparent 4px),
+    radial-gradient(circle at 32% 16%, hsl(39 88% 62% / 0.16), transparent 0 2px, transparent 4px),
+    radial-gradient(circle at 64% 14%, hsl(262 70% 74% / 0.14), transparent 0 2px, transparent 4px),
+    radial-gradient(circle at 82% 28%, hsl(39 88% 62% / 0.1), transparent 0 2px, transparent 4px),
+    linear-gradient(180deg, hsl(0 0% 3% / 0.1), hsl(0 0% 3% / 0.35));
+  opacity: 1;
+}
+
+body.dark .badge {
+  background: hsl(0 0% 8% / 0.82);
+  border-color: hsl(39 68% 70% / 0.45);
+  box-shadow: 0 0 0 1px hsl(0 0% 0% / 0.45), 0 12px 30px hsl(0 0% 0% / 0.28);
+}
+
+body.dark .dot {
+  background: hsl(39 85% 70%);
+  box-shadow: 0 0 16px hsl(39 85% 70% / 0.5);
+}
+
+body.dark .hero-title {
+  text-shadow: 0 0 32px hsl(262 70% 70% / 0.08);
+}
+
+body.dark .typewriter {
+  color: hsl(35 30% 78%);
+}
+
+body.dark .hero-desc {
+  color: hsl(35 20% 76%);
+}
+
+body.dark .hero-desc + .hero-desc {
+  color: hsl(35 18% 72%);
+}
+
+body.dark .image-glow {
+  background: radial-gradient(circle, hsl(39 80% 66% / 0.36), hsl(262 70% 70% / 0.16) 48%, transparent 74%);
+  opacity: .7;
+  filter: blur(42px);
+}
+
+body.dark .image-frame {
+  background: linear-gradient(180deg, hsl(0 0% 12% / 0.82), hsl(0 0% 4% / 0.92));
+  border: 1px solid hsl(39 68% 70% / 0.48);
+  box-shadow:
+    0 0 0 1px hsl(0 0% 0% / 0.5),
+    0 0 0 8px hsl(39 68% 70% / 0.06),
+    0 30px 90px hsl(0 0% 0% / 0.55),
+    0 0 48px hsl(262 70% 70% / 0.18);
+}
+
+body.dark .image-frame img {
+  border-radius: 1.35rem;
+}
+
+body.dark .floating-card {
+  background: hsl(0 0% 8% / 0.82);
+  border-color: hsl(39 68% 70% / 0.5);
+  box-shadow: 0 14px 34px hsl(0 0% 0% / 0.32);
+}
+
+body.dark .floating-card .muted {
+  color: hsl(35 18% 68%);
+}
+
+body.dark .floating-card .accent,
+body.dark .floating-card .accent.big {
+  color: hsl(39 85% 72%);
+}
+
+body.dark .btn-primary,
+body.dark .btn-outline,
+body.dark .btn.btn-icon,
+body.dark .github-link,
+body.dark .achievement-link-pill,
+body.dark .footer-socials a,
+body.dark .back-to-top {
+  border-color: hsl(39 68% 70% / 0.45);
+  background: hsl(0 0% 8% / 0.72);
+  color: var(--fg);
+}
+
+body.dark .btn-primary {
+  border-color: hsl(39 68% 70% / 0.7);
+  background: hsl(0 0% 8% / 0.78);
+  color: hsl(39 88% 76%);
+}
+
+body.dark .btn-outline {
+  border-color: hsl(262 70% 78% / 0.6);
+  background: hsl(0 0% 8% / 0.78);
+  color: hsl(33 46% 92%);
+}
+
+body.dark .btn.btn-icon:hover,
+body.dark .github-link:hover,
+body.dark .achievement-date-pill,
+body.dark .cert-footer,
+body.dark .footer-socials a:hover,
+body.dark .back-to-top:hover {
+  background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
+  color: hsl(0 0% 8%);
+  border-color: hsl(39 80% 66%);
+}
+
+body.dark .btn-primary:hover,
+body.dark .btn-outline:hover,
+body.dark .btn.btn-icon:hover,
+body.dark .github-link:hover,
+body.dark .achievement-link-pill:hover,
+body.dark .footer-socials a:hover,
+body.dark .back-to-top:hover {
+  box-shadow: 0 16px 36px hsl(39 90% 70% / 0.16);
+}
+
+body.dark .btn-primary:hover {
+  background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
+  color: hsl(0 0% 8%);
+}
+
+body.dark .btn-outline:hover {
+  background: linear-gradient(135deg, hsl(262 70% 70%), hsl(262 55% 56%));
+  color: hsl(0 0% 8%);
+}
+
+body.dark .icon-btn {
+  border-color: hsl(39 68% 70% / 0.35);
+  background: hsl(0 0% 8% / 0.7);
+  color: hsl(35 26% 84%);
+}
+
+body.dark .icon-btn:hover {
+  background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
+  color: hsl(0 0% 8%);
+  border-color: hsl(39 80% 66%);
+}
+
+body.dark .social-rail,
+body.dark .navbar.scrolled .nav,
+body.dark .mobile-menu,
+body.dark .contact-form,
+body.dark .stat,
+body.dark .project,
+body.dark .skill-stack-card,
+body.dark .skill-tile,
+body.dark .cert-card,
+body.dark .footer-shell {
+  background: hsl(0 0% 8% / 0.72);
+  border-color: hsl(39 35% 24% / 0.55);
+  box-shadow: 0 16px 40px hsl(0 0% 0% / 0.28);
+}
+
+body.dark .nav-link:hover,
+body.dark .nav-link.active,
+body.dark .m-link.active,
+body.dark .m-link:hover {
+  color: hsl(39 85% 74%);
+}
+
+body.dark .nav-link::after {
+  background: linear-gradient(90deg, hsl(39 85% 74%), hsl(262 70% 78%));
+}
+
+body.dark .skill-stack-card {
+  box-shadow: 0 18px 40px hsl(0 0% 0% / 0.34);
+}
+
+body.dark .skill-stack-head span,
+body.dark .box-label,
+body.dark .footer-brand-subtitle,
+body.dark .footer-links a,
+body.dark .footer-description,
+body.dark .achievement-details,
+body.dark .project-desc,
+body.dark .cert-desc,
+body.dark .box-note {
+  color: hsl(35 18% 70%);
+}
+
+body.dark .skill-tile {
+  background: linear-gradient(180deg, hsl(0 0% 12%), hsl(0 0% 7%));
+  border-color: hsl(39 20% 30% / 0.85);
+  box-shadow: 8px 8px 0 hsl(0 0% 0% / 0.55), 0 14px 30px hsl(0 0% 0% / 0.38), inset 0 -2px 0 hsl(39 68% 70% / 0.5);
+}
+
+body.dark .skill-tile::before {
+  background: radial-gradient(circle at top, hsl(39 85% 74% / 0.08), transparent 55%);
+}
+
+body.dark .skill-icon-wrap {
+  background: hsl(0 0% 10%);
+  border-color: hsl(39 32% 32% / 0.85);
+}
+
+body.dark .skill-tile:hover {
+  border-color: hsl(39 68% 70% / 0.8);
+  box-shadow: 10px 10px 0 hsl(0 0% 0% / 0.55), 0 16px 35px hsl(0 0% 0% / 0.42), inset 0 -2px 0 hsl(39 85% 70% / 0.75);
+}
+
+body.dark .skill-tile span:last-child,
+body.dark .project-title,
+body.dark .achievement-name,
+body.dark .cert-category,
+body.dark .footer-column h3,
+body.dark .footer-brand-name,
+body.dark .box-value,
+body.dark .eyebrow,
+body.dark .section-title h2,
+body.dark .section-title p,
+body.dark .about-text strong {
+  color: hsl(32 38% 94%);
+}
+
+body.dark .tech span {
+  background: hsl(0 0% 10%);
+  color: hsl(35 26% 84%);
+  border-color: hsl(39 26% 30% / 0.7);
+}
+
+body.dark .project-overlay {
+  background: linear-gradient(to top, hsl(0 0% 3% / 0.96), transparent 60%);
+}
+
+body.dark .project:hover,
+body.dark .stat:hover,
+body.dark .cert-card:hover {
+  border-color: hsl(39 68% 70% / 0.55);
+  box-shadow: var(--shadow-card-hover);
+}
+
+body.dark .project-date,
+body.dark .cert-footer,
+body.dark .achievement-date-pill {
+  border-color: hsl(39 80% 66% / 0.35);
+}
+
+body.dark .achievement-link-pill {
+  background: hsl(0 0% 8% / 0.82);
+}
+
+body.dark .achievement-link-pill:hover {
+  background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
+  color: hsl(0 0% 8%);
+}
+
+body.dark .award-badge {
+  background: hsl(0 0% 8% / 0.78);
+  border-color: hsl(39 68% 70% / 0.35);
+  color: hsl(32 38% 94%);
+  box-shadow: 0 12px 32px hsl(0 0% 0% / 0.28);
+}
+
+body.dark .award-icon {
+  color: hsl(39 85% 72%);
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea,
+body.dark .map,
+body.dark .box-icon,
+body.dark .footer-socials a,
+body.dark .back-to-top {
+  background: hsl(0 0% 10% / 0.86);
+}
+
+body.dark .contact-form input::placeholder,
+body.dark .contact-form textarea::placeholder {
+  color: hsl(35 12% 55%);
+}
+
+body.dark .contact-form input:focus,
+body.dark .contact-form textarea:focus {
+  box-shadow: 0 0 0 3px hsl(39 85% 70% / 0.15);
+}
+
+body.dark .toast {
+  background: hsl(0 0% 8% / 0.96);
+  border-color: hsl(39 68% 70% / 0.5);
+  box-shadow: var(--shadow-glow);
 }
