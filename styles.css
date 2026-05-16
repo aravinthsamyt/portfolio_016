@@ -394,14 +394,24 @@ body.dark .text-gradient {
 }
 
 /* Icon / image sizing inside the badge */
+.brand-badge {
+  display: inline-grid;
+  place-items: center;
+  padding: 0.08rem;
+}
+
 .brand-badge i,
 .brand-badge img {
-  width: 1.15rem;
-  height: 1.15rem;
-  display: block;
+  font-size: 1.12rem;
+  width: auto;
+  height: auto;
+  display: inline-block;
   line-height: 1;
+  margin: 0;
+  transform: none;
+  vertical-align: middle;
 }
-.brand-badge img { object-fit: cover; }
+.brand-badge img { object-fit: cover; width: 1.15rem; height: 1.15rem; }
 
 /* Light-mode tweaks */
 body:not(.dark) .brand-badge {
@@ -449,10 +459,10 @@ body.dark .brand-badge {
   transform-origin: left;
 }
 body:not(.dark) .nav-link:hover { 
-  color: rgb(248, 214, 131); 
+  color: rgb(20, 78, 75); 
 }
 body:not(.dark) .nav-link.active { 
-  color: rgb(251, 210, 107); 
+  color: rgb(50, 50, 50); 
 }
 .nav-actions { display: flex; gap: .5rem; }
 .mobile-only { display: none; }
@@ -846,6 +856,10 @@ body:not(.dark) #contact {
   margin: 0.5rem auto 0;
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(255,214,132,0) 0%, rgba(255,214,132,0.95) 50%, rgba(255,214,132,0) 100%);
+}
+
+body:not(.dark) .section:not(#home) .section-title::after {
+  background: linear-gradient(90deg, rgba(33, 32, 32, 0) 0%, rgba(140,140,140,0.9) 50%, rgba(140,140,140,0) 100%);
 }
 
 /* ===== Section end divider (except home) ===== */
@@ -1456,6 +1470,7 @@ body:not(.dark) .contact-form textarea {
 .footer {
   padding: 3rem 13px 2rem;
   border-top: 1px solid var(--border);
+  background-color: linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsla(180, 6%, 81%, 0.12));
 }
 .footer-shell {
   padding: 1.5rem;
@@ -1850,18 +1865,18 @@ body.dark .stat-icon{
   color: rgb(255, 214, 109);
   border:1px solid rgb(255, 214, 109);
 }
-body.dark .glass {
+body.dark .glass{
   background: hsl(0 0% 8% / 0.7);
   border-color: hsl(36 35% 25% / 0.62);
   box-shadow: 0 16px 50px hsl(0 0% 0% / 0.28);
 }
 
-body.dark .glass:hover {
+body.dark .glass:hover{
   border-color: hsl(39 68% 70% / 0.45);
   box-shadow: var(--shadow-glow);
 }
 
-body.dark .hero-bg {
+body.dark .hero-bg{
   background:
     radial-gradient(circle at 18% 22%, hsl(39 88% 62% / 0.12), transparent 0 2px, transparent 4px),
     radial-gradient(circle at 32% 16%, hsl(39 88% 62% / 0.16), transparent 0 2px, transparent 4px),
@@ -2056,7 +2071,7 @@ body.dark .m-link:hover {
 }
 
 body.dark .nav-link::after {
-  background: linear-gradient(90deg, hsl(39 85% 74%), hsl(262 70% 78%));
+  background: hsl(39 85% 74%);;
 }
 
 body.dark .skill-stack-card {
