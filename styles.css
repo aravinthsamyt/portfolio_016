@@ -1279,13 +1279,12 @@ body:not(.dark) .project-overlay {
 }
 .project-date i { font-size: 1rem; }
 .github-link {
-  display: inline-grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .6rem;
   border-radius: .6rem;
-  border: 1px solid black;
+  border: 1px solid var(--border);
   color: var(--fg);
   text-decoration: none;
   background: transparent;
@@ -1293,11 +1292,18 @@ body:not(.dark) .project-overlay {
 }
 .github-link i {
   font-size: 1rem;
+  display: inline-block;
+}
+.github-link .github-label {
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-block;
 }
 .github-link:hover {
   border-color: var(--primary);
   background: rgb(55, 122, 107);
-  color:rgb(252, 218, 132);
+  color: rgb(252, 218, 132);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px hsl(0 0% 0% / 0.18);
 }
@@ -1609,7 +1615,7 @@ body:not(.dark) .contact-form textarea {
   gap: .5rem;
   padding: .65rem .95rem;
   border-radius: .85rem;
-  border: 1px solid var(--border);
+  border: 1px solid black;
   background: hsl(0 0% 100% / 0.08);
   color: var(--fg);
   transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
@@ -1617,8 +1623,8 @@ body:not(.dark) .contact-form textarea {
 .back-to-top:hover {
   transform: translateY(-2px);
   border-color: var(--primary);
-  color: var(--primary-fg);
-  background: var(--primary);
+  color: rgb(252, 218, 132);
+  background:rgb(55, 122, 107);
 }
 
 /* Achievements */
@@ -2203,4 +2209,18 @@ body.dark .toast {
   background: hsl(0 0% 8% / 0.96);
   border-color: hsl(39 68% 70% / 0.5);
   box-shadow: var(--shadow-glow);
+}
+
+/* Light-mode footer icons: show project-hover style by default and lift on hover */
+body:not(.dark) .footer-socials a {
+  border-color: var(--primary);
+  transform: none;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+}
+body:not(.dark) .footer-socials a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px hsl(0 0% 0% / 0.14);
+  background: rgb(55, 122, 107);
+  color: rgb(252, 218, 132);
+  box-shadow: 0 8px 20px hsl(0 0% 0% / 0.12);
 }

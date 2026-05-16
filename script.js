@@ -168,7 +168,7 @@ const projects = [
     img: 'assets/projects/zeon_charge.jpeg',
     tech: ['React','Tailwind CSS', 'Node.js', 'Firebase', 'TypeScript'],
     duration: 'Jan 2025-March 2025',
-    demo: '#', code: '#'
+    demo: 'https://github.com/aravinthsamyt/zeon_logs/tree/main/Zeon-Logs-main', code: 'https://github.com/aravinthsamyt/zeon_logs/tree/main/Zeon-Logs-main'
   },
   {
     title: 'Fabric Defect Detection',
@@ -176,7 +176,7 @@ const projects = [
     img: 'assets/projects/fabric_project.png',
     tech: ['React', 'Tailwind CSS', 'PyTorch','Python', 'Firebase','OpenCV'],
     duration: 'Feb 2025-Apr 2025',
-    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/fabric_project'
+    demo: 'https://github.com/aravinthsamyt/fabric_project', code: 'https://github.com/aravinthsamyt/fabric_project'
   },
   {
     title: 'Blog space',
@@ -184,7 +184,7 @@ const projects = [
     img: 'assets/projects/blog.png',
     tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
     duration: 'Nov 2024-Jan 2025',
-    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/blogging'
+    demo: 'https://github.com/aravinthsamyt/blog_website/tree/main/blogging-main', code: 'https://github.com/aravinthsamyt/blog_website/tree/main/blogging-main'
   },
   {
     title: 'Single page CV',
@@ -192,7 +192,7 @@ const projects = [
     img: 'assets/projects/singlepage_cv.png',
     tech: ['HTML', 'CSS'],
     duration: 'Oct 2024-Nov 2024',
-    demo: '#', code: '#'
+    demo: 'https://single-page-cv-livid-theta.vercel.app/', code: 'https://github.com/aravinthsamyt/single_pageCv'
   },
   {
     title: 'Changelog',
@@ -200,7 +200,7 @@ const projects = [
     img: 'assets/projects/changelog.png',
     tech: ['HTML', 'CSS'],
     duration: 'Sep 2024-Oct 2024',
-    demo: '#', code: '#'
+    demo: 'https://changelog-lime.vercel.app/', code: 'https://github.com/aravinthsamyt/changelog'
   },
   {
     title: 'Calculator',
@@ -208,13 +208,17 @@ const projects = [
     img: 'assets/projects/calculator.png',
     tech: ['HTML', 'CSS', 'JavaScript'],
     duration: 'Aug 2024-Sep 2024',
-    demo: '#', code: 'https://github.com/ARAVINTHSAMY-T/calculator'
+    demo: 'https://calculater-pi-three.vercel.app/', code: 'https://github.com/aravinthsamyt/calculater'
   },
 ];
 const grid = document.getElementById('projectsGrid');
-projects.forEach(p => {
+projects.forEach((p, idx) => {
   const card = document.createElement('article');
   card.className = 'project reveal';
+  const liveDemoHtml = idx < 3
+    ? `<a class="btn btn-icon live-demo" href="${p.demo}" target="_blank" rel="noreferrer" title="View on GitHub"><i class="ri-github-fill"></i></a>`
+    : `<a class="btn btn-icon live-demo" href="${p.demo}" target="_blank" rel="noreferrer" title="Live demo"><i class="icon-external-link"></i></a>`;
+
   card.innerHTML = `
     <div class="project-img">
       <img src="${p.img}" alt="${p.title}" loading="lazy"/>
@@ -222,13 +226,13 @@ projects.forEach(p => {
     <div class="project-body">
       <div class="project-title-row">
         <h3 class="project-title">${p.title}</h3>
-        <a class="btn btn-icon live-demo" href="${p.demo}" target="_blank" rel="noreferrer" title="Live demo"><i class="icon-external-link"></i></a>
+        ${liveDemoHtml}
       </div>
       <p class="project-desc">${p.desc}</p>
       <div class="tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
       <div class="project-meta">
         <div class="project-date"><i class="icon-calendar"></i><span>${p.duration || 'Jan 2025-March 2025'}</span></div>
-        <a class="github-link" href="${p.code}" target="_blank" rel="noreferrer" title="View on GitHub"><i class="ri-github-fill"></i></a>
+        <a class="github-link" href="${p.code}" target="_blank" rel="noreferrer" title="View on GitHub"><i class="ri-github-fill"></i><span class="github-label">Github</span></a>
       </div>
     </div>`;
   grid.appendChild(card);
@@ -245,6 +249,35 @@ form.addEventListener('submit', (e) => {
   form.reset();
   setTimeout(() => toast.classList.add('hidden'), 3500);
 });
+
+// ===== Resume download (force download fallback) =====
+const resumeBtn = document.querySelector('.footer-resume-btn');
+if (resumeBtn) {
+  resumeBtn.addEventListener('click', async (e) => {
+    // Let native download happen on non-JS or if user holds modifier keys
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    const url = resumeBtn.getAttribute('href');
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Network error');
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      // Use the download attribute if provided, otherwise fallback to filename from URL
+      const filename = resumeBtn.getAttribute('download') || url.split('/').pop();
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(objectUrl);
+    } catch (err) {
+      // Fallback: navigate to file which may open in new tab
+      window.location.href = url;
+    }
+  });
+}
 
 // ===== Achievements =====
 const achievements = [
