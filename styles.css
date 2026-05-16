@@ -275,9 +275,14 @@ img { max-width: 100%; display: block; }
   background: var(--gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: rgb(83, 83, 83);
 }
-
+body.dark .text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: rgb(245, 213, 133);
+}
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
@@ -376,13 +381,42 @@ img { max-width: 100%; display: block; }
   color: inherit;
 }
 .brand-badge {
-  display: grid; 
+  display: grid;
   place-items: center;
-  width: 2rem; 
-  height: 2rem; 
+  width: 2rem;
+  height: 2rem;
   border-radius: .5rem;
-  background: var(--gradient-primary); 
+  background: var(--gradient-primary);
   color: var(--primary-fg);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-glow);
+  overflow: hidden;
+}
+
+/* Icon / image sizing inside the badge */
+.brand-badge i,
+.brand-badge img {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
+  line-height: 1;
+}
+.brand-badge img { object-fit: cover; }
+
+/* Light-mode tweaks */
+body:not(.dark) .brand-badge {
+  background: linear-gradient(135deg, hsl(155 45% 96%), hsl(160 58% 78%));
+  border-color: hsl(0 0% 0% / 0.12);
+  color: hsl(0 0% 8%);
+  box-shadow: 0 8px 18px hsl(0 0% 0% / 0.08);
+}
+
+/* Dark-mode tweaks */
+body.dark .brand-badge {
+  background: linear-gradient(135deg, hsl(39 88% 76%), hsl(262 70% 78%));
+  border-color: hsl(39 68% 70% / 0.45);
+  color: var(--primary-fg);
+  box-shadow: 0 10px 30px hsl(39 90% 70% / 0.12);
 }
 .nav-links { 
   display: flex; 
@@ -799,6 +833,31 @@ body:not(.dark) #contact {
   margin-top: 1rem; 
 }
 
+/* ===== Section header underline (except home) ===== */
+.section:not(#home) .section-title {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+.section:not(#home) .section-title::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 6px;
+  margin: 0.5rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,214,132,0) 0%, rgba(255,214,132,0.95) 50%, rgba(255,214,132,0) 100%);
+}
+
+/* ===== Section end divider (except home) ===== */
+.section:not(#home)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 3rem;
+  background: linear-gradient(90deg, transparent, rgba(255,214,132,0.18), transparent);
+}
+
 /* About */
 .about-grid { 
   display: grid; 
@@ -850,6 +909,7 @@ body:not(.dark) #contact {
   background: rgb(23, 95, 91); 
   color: rgb(255, 214, 109);
 }
+
 .stat-value { 
   font-size: 1.5rem;
   font-weight: 700;
@@ -1143,6 +1203,8 @@ body:not(.dark) .project-overlay {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--border);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 .project-title {
   font-size: 1.15rem;
@@ -1296,6 +1358,7 @@ body:not(.dark) .contact-right {
   display: flex; 
   flex-direction: column; 
 }
+
 .box-label { 
   font-family: 'JetBrains Mono', monospace; 
   font-size: .78rem; 
@@ -1766,7 +1829,27 @@ body:not(.dark) .be {
   font-weight: 1000;
   font-size: 17px;
 }
-
+body.dark .project-date {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .6rem;
+  border-radius: .6rem;
+  border: 1px solid var(--border);
+  background: rgb(240, 203, 110);
+  color:rgb(48, 47, 47);
+  font-size: .9rem;
+}
+body.dark .stat-icon{
+  display: grid; 
+  place-items: center; 
+  width: 3rem; 
+  height: 3rem;
+  border-radius: .65rem; 
+  background: rgb(43, 43, 43); 
+  color: rgb(255, 214, 109);
+  border:1px solid rgb(255, 214, 109);
+}
 body.dark .glass {
   background: hsl(0 0% 8% / 0.7);
   border-color: hsl(36 35% 25% / 0.62);
@@ -1891,17 +1974,33 @@ body.dark .btn-outline {
   box-shadow: 0 12px 28px hsl(262 70% 78% / 0.28);
 }
 
-body.dark .btn.btn-icon:hover,
-body.dark .github-link:hover,
+
 body.dark .achievement-date-pill,
-body.dark .cert-footer,
-body.dark .footer-socials a:hover,
 body.dark .back-to-top:hover {
   background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
   color: hsl(0 0% 8%);
   border-color: hsl(39 80% 66%);
 }
-
+body.dark .footer-socials a:hover{
+  background: black;
+  color: hsl(39 80% 66%);
+  border-color: hsl(39 80% 66%);
+}
+body.dark .btn.btn-icon:hover{ 
+  background: black;
+  color: hsl(39 80% 66%);
+  border-color: hsl(39 80% 66%);
+}
+body.dark .github-link:hover{
+  background: black;
+  color: hsl(39 80% 66%);
+  border-color: hsl(39 80% 66%);
+}
+body.dark .cert-footer{
+  background: black;
+  color: hsl(39 80% 66%);
+  border:1px solid hsl(39 80% 66%);
+}
 body.dark .btn-primary:hover,
 body.dark .btn-outline:hover,
 body.dark .btn.btn-icon:hover,
@@ -1965,15 +2064,22 @@ body.dark .skill-stack-card {
 }
 
 body.dark .skill-stack-head span,
-body.dark .box-label,
 body.dark .footer-brand-subtitle,
 body.dark .footer-links a,
 body.dark .footer-description,
 body.dark .achievement-details,
 body.dark .project-desc,
-body.dark .cert-desc,
-body.dark .box-note {
+body.dark .cert-desc{
   color: hsl(35 18% 70%);
+}
+body.dark .box-note {
+  color: hsl(31, 73%, 90%);
+}
+body.dark .box-value{
+  color: hsl(46, 91%, 82%);
+}
+body.dark .box-label{
+  color: hsl(36, 51%, 81%);
 }
 
 body.dark .skill-tile {
@@ -2002,7 +2108,6 @@ body.dark .achievement-name,
 body.dark .cert-category,
 body.dark .footer-column h3,
 body.dark .footer-brand-name,
-body.dark .box-value,
 body.dark .eyebrow,
 body.dark .section-title h2,
 body.dark .section-title p,
@@ -2038,8 +2143,8 @@ body.dark .achievement-link-pill {
 }
 
 body.dark .achievement-link-pill:hover {
-  background: linear-gradient(135deg, hsl(39 74% 64%), hsl(39 60% 50%));
-  color: hsl(0 0% 8%);
+  background: rgb(33, 33, 33);
+  color: hsl(39 74% 64%);
 }
 
 body.dark .award-badge {
@@ -2056,12 +2161,19 @@ body.dark .award-icon {
 body.dark .contact-form input,
 body.dark .contact-form textarea,
 body.dark .map,
-body.dark .box-icon,
-body.dark .footer-socials a,
 body.dark .back-to-top {
   background: hsl(0 0% 10% / 0.86);
 }
-
+body.dark .footer-socials a{
+    background: hsl(0 0% 10% / 0.86);
+    border-color: hsla(39, 19%, 44%, 0.85);
+    color:  hsla(30, 100%, 100%, 0.85);
+}
+body.dark .box-icon{
+  background: hsl(0 0% 10% / 0.86);
+  border-color: hsl(39 32% 32% / 0.85);
+  color:  hsla(38, 91%, 69%, 0.85);
+}
 body.dark .contact-form input::placeholder,
 body.dark .contact-form textarea::placeholder {
   color: hsl(35 12% 55%);
