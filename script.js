@@ -254,7 +254,7 @@ emailjs.init('xfw5xp29vH-a7nFOh');
 emailjs.send('service_e9vf2mi','template_1cp15a6', {...})
 // Get your Public Key from EmailJS dashboard -> Account -> API Keys -> Public Key
 // Replace the placeholder below with your actual Public Key (it's safe to keep public key client-side)
-emailjs.init('YOUR_PUBLIC_KEY'); // e.g. 'user_abc123...'
+emailjs.init('xfw5xp29vH-a7nFOh'); // e.g. 'user_abc123...'
 
 if (form) {
   form.addEventListener('submit', async (e) => {
@@ -272,7 +272,7 @@ if (form) {
       // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with values from your EmailJS account
       // Service ID: Email Services -> click your service -> Service ID (e.g. 'service_xxx')
       // Template ID: Email Templates -> click your template -> Template ID (e.g. 'template_xxx')
-      const response = await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+      const response = await emailjs.send('service_e9vf2mi', 'template_1cp15a6', {
         to_email: 'aravinthtamil2005@gmail.com',
         from_name: name,
         from_email: email,
