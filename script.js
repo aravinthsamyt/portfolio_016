@@ -23,6 +23,7 @@ const setTheme = (t) => {
 setTheme(localStorage.getItem('theme') || 'dark');
 themeToggle.addEventListener('click', () => {
   setTheme(body.classList.contains('dark') ? 'light' : 'dark');
+  renderSkillStacks();
 });
 
 // ===== Navbar scrolled state =====
@@ -86,7 +87,7 @@ const skillStacks = [
       { name: 'CSS3', iconUrl: 'https://cdn.simpleicons.org/css/1572B6' },
       { name: 'JavaScript', iconUrl: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
       { name: 'React.js', iconUrl: 'https://cdn.simpleicons.org/react/61DAFB' },
-      { name: 'Next.js', iconUrl: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF' },
+      { name: 'Next.js', iconUrl: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF', lightIconUrl: 'https://cdn.simpleicons.org/nextdotjs/000000' },
       { name: 'Tailwind CSS', iconUrl: 'https://cdn.simpleicons.org/tailwindcss/38BDF8' },
     ],
   },
@@ -95,7 +96,7 @@ const skillStacks = [
     count: 4,
     items: [
       { name: 'Node.js', iconUrl: 'https://cdn.simpleicons.org/nodedotjs/68A063' },
-      { name: 'Express.js', iconUrl: 'https://cdn.simpleicons.org/express/FFFFFF' },
+      { name: 'Express.js', iconUrl: 'https://cdn.simpleicons.org/express/FFFFFF', lightIconUrl: 'https://cdn.simpleicons.org/express/000000' },
       { name: 'REST API', iconUrl: 'https://cdn.simpleicons.org/openapiinitiative/6BA539' },
       { name: 'JWT / OAuth', iconUrl: 'https://cdn.simpleicons.org/auth0/EB5424' },
     ],
@@ -115,11 +116,10 @@ const skillStacks = [
     count: 6,
     items: [
       { name: 'Git', iconUrl: 'https://cdn.simpleicons.org/git/F05032' },
-      { name: 'GitHub', iconUrl: 'https://cdn.simpleicons.org/github/FFFFFF' },
+      { name: 'GitHub', iconUrl: 'https://cdn.simpleicons.org/github/FFFFFF', lightIconUrl: 'https://cdn.simpleicons.org/github/181717' },
       { name: 'VS Code', iconUrl: 'https://cdn.simpleicons.org/visualstudiocode/007ACC' },
       { name: 'Postman', iconUrl: 'https://cdn.simpleicons.org/postman/FF6C37' },
-      { name: 'Firebase', iconUrl: 'https://cdn.simpleicons.org/firebase/FFCA28' },
-      { name: 'Vercel', iconUrl: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
+      { name: 'Vercel', iconUrl: 'https://cdn.simpleicons.org/vercel/FFFFFF', lightIconUrl: 'https://cdn.simpleicons.org/vercel/000000' },
     ],
   },
   {
@@ -135,20 +135,24 @@ const skillStacks = [
 ];
 
 const skillStacksContainer = document.getElementById('skillStacks');
-if (skillStacksContainer) {
-  skillStacksContainer.innerHTML = skillStacks.map((stack, stackIndex) => `
+function renderSkillStacks() {
+  if (!skillStacksContainer) return;
+  const useDarkMode = body.classList.contains('dark');
+
+  skillStacksContainer.innerHTML = skillStacks.map((stack) => `
     <article class="skill-stack-card glass reveal">
       <div class="skill-stack-head">
         <h3>${stack.title}</h3>
         <span>${stack.count} tools</span>
       </div>
       <div class="skill-tile-grid">
-        ${stack.items.map((skill, skillIndex) => {
+        ${stack.items.map((skill) => {
           const fallbackLabel = (skill.name || '').slice(0, 2).toUpperCase();
+          const iconUrl = useDarkMode || !skill.lightIconUrl ? skill.iconUrl : skill.lightIconUrl;
           return `
           <div class="skill-tile">
             <div class="skill-icon-wrap">
-              <img class="skill-icon" src="${skill.iconUrl}" alt="${skill.name} logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <img class="skill-icon" src="${iconUrl}" alt="${skill.name} logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
               <span class="skill-icon-fallback" style="display:none;">${fallbackLabel}</span>
             </div>
             <span>${skill.name}</span>
@@ -159,6 +163,8 @@ if (skillStacksContainer) {
   `).join('');
   skillStacksContainer.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 }
+
+renderSkillStacks();
 
 // ===== Projects =====
 const projects = [
@@ -242,13 +248,12 @@ projects.forEach((p, idx) => {
 // ===== Contact form =====
 const form = document.getElementById('contactForm');
 const toast = document.getElementById('toast');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  toast.textContent = '✓ Message sent! I\'ll get back to you soon.';
-  toast.classList.remove('hidden');
-  form.reset();
-  setTimeout(() => toast.classList.add('hidden'), 3500);
-});
+if (form) {
+  form.addEventListener('submit', () => {
+    toast.textContent = 'Sending message...';
+    toast.classList.remove('hidden');
+  });
+}
 
 // ===== Resume download (force download fallback) =====
 const resumeBtn = document.querySelector('.footer-resume-btn');
