@@ -249,49 +249,45 @@ projects.forEach((p, idx) => {
 const form = document.getElementById('contactForm');
 const toast = document.getElementById('toast');
 
-// Initialize EmailJS with your Public Key
-emailjs.init('xfw5xp29vH-a7nFOh');
-emailjs.send('service_e9vf2mi','template_1cp15a6', {...})
-// Get your Public Key from EmailJS dashboard -> Account -> API Keys -> Public Key
-// Replace the placeholder below with your actual Public Key (it's safe to keep public key client-side)
-emailjs.init('xfw5xp29vH-a7nFOh'); // e.g. 'user_abc123...'
+// Initialize EmailJS with Public Key (safe initialization)
+if (typeof emailjs !== 'undefined') {
+  emailjs.init('xfw5xp29vH-a7nFOh');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      toast.textContent = 'Sending message...';
+      toast.classList.remove('hidden');
+      
+      const name = form.querySelector('input[name="name"]').value;
+      const email = form.querySelector('input[name="email"]').value;
+      const subject = form.querySelector('input[name="subject"]').value;
+      const message = form.querySelector('textarea[name="message"]').value;
+      
+      try {
+        // EmailJS Service ID: service_e9vf2mi | Template ID: template_1cp15a6
+        const response = await emailjs.send('service_e9vf2mi', 'template_1cp15a6', {
+          to_email: 'aravinthtamil2005@gmail.com',
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message,
+        });
 
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    toast.textContent = 'Sending message...';
-    toast.classList.remove('hidden');
-    
-    const name = form.querySelector('input[name="name"]').value;
-    const email = form.querySelector('input[name="email"]').value;
-    const subject = form.querySelector('input[name="subject"]').value;
-    const message = form.querySelector('textarea[name="message"]').value;
-    
-    try {
-      // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with values from your EmailJS account
-      // Service ID: Email Services -> click your service -> Service ID (e.g. 'service_xxx')
-      // Template ID: Email Templates -> click your template -> Template ID (e.g. 'template_xxx')
-      const response = await emailjs.send('service_e9vf2mi', 'template_1cp15a6', {
-        to_email: 'aravinthtamil2005@gmail.com',
-        from_name: name,
-        from_email: email,
-        subject: subject,
-        message: message,
-      });
-
-      if (response && response.status === 200) {
-        toast.textContent = '✓ Message sent! I\'ll get back to you soon.';
-        form.reset();
+        if (response && response.status === 200) {
+          toast.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          form.reset();
+          setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+      } catch (error) {
+        toast.textContent = 'Error sending message. Please try again.';
         setTimeout(() => toast.classList.add('hidden'), 3500);
       }
-    } catch (error) {
-      // For debugging, you can uncomment the next line to see the error in console
-      // console.error('EmailJS send error:', error);
-      toast.textContent = 'Error sending message. Please try again.';
-      setTimeout(() => toast.classList.add('hidden'), 3500);
-    }
-  });
+    });
+  }
+} else {
+  console.warn('EmailJS library not loaded - contact form disabled');
 }
 
 // ===== Resume download (force download fallback) =====
