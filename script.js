@@ -173,7 +173,7 @@ const projects = [
     desc: 'A smart charging analysis system designed to monitor and analyze EV charging performance and efficiency.Provides real-time insights, data visualization, and optimized charging statistics using interactive dashboards.',
     img: 'assets/projects/zeon_charge.jpeg',
     tech: ['React','Tailwind CSS', 'Node.js', 'Firebase', 'TypeScript'],
-    duration: 'Jan 2025-March 2025',
+    duration: 'Jan 2026-Feb 2026',
     demo: 'https://github.com/aravinthsamyt/zeon_logs/tree/main/Zeon-Logs-main', code: 'https://github.com/aravinthsamyt/zeon_logs/tree/main/Zeon-Logs-main'
   },
   {
@@ -181,7 +181,7 @@ const projects = [
     desc: 'An image-processing based application developed to detect defects in fabrics automatically for quality assurance.Uses computer vision techniques to identify irregularities and improve manufacturing inspection accuracy.',
     img: 'assets/projects/fabric_project.png',
     tech: ['React', 'Tailwind CSS', 'PyTorch','Python', 'Firebase','OpenCV'],
-    duration: 'Feb 2025-Apr 2025',
+    duration: 'Dec 2025-Feb 2026',
     demo: 'https://github.com/aravinthsamyt/fabric_project', code: 'https://github.com/aravinthsamyt/fabric_project'
   },
   {
@@ -189,7 +189,7 @@ const projects = [
     desc: 'A full-stack blogging platform where users can create, edit, and publish articles with a clean and responsive interface.Implemented authentication, dynamic content management, and modern UI features for a smooth user experience.',
     img: 'assets/projects/blog.png',
     tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
-    duration: 'Nov 2024-Jan 2025',
+    duration: 'Jun 2025-Sep 2025',
     demo: 'https://github.com/aravinthsamyt/blog_website/tree/main/blogging-main', code: 'https://github.com/aravinthsamyt/blog_website/tree/main/blogging-main'
   },
   {
@@ -197,7 +197,7 @@ const projects = [
     desc: 'A modern single-page resume website built to showcase skills, projects, and achievements in a professional layout.Designed with responsive UI and smooth navigation for an engaging portfolio experience.',
     img: 'assets/projects/singlepage_cv.png',
     tech: ['HTML', 'CSS'],
-    duration: 'Oct 2024-Nov 2024',
+    duration: 'Feb 2026-Mar 2026',
     demo: 'https://single-page-cv-livid-theta.vercel.app/', code: 'https://github.com/aravinthsamyt/single_pageCv'
   },
   {
@@ -205,7 +205,7 @@ const projects = [
     desc: 'An animated timeline website built using HTML and CSS to showcase the historical evolution of cars and bikes through different eras.Features smooth animations and interactive visual transitions to present vehicle milestones and establishment years in an engaging way.',
     img: 'assets/projects/changelog.png',
     tech: ['HTML', 'CSS'],
-    duration: 'Sep 2024-Oct 2024',
+    duration: 'Mar 2026-Mar 2026',
     demo: 'https://changelog-lime.vercel.app/', code: 'https://github.com/aravinthsamyt/changelog'
   },
   {
@@ -213,7 +213,7 @@ const projects = [
     desc: 'A responsive calculator application capable of performing basic arithmetic and scientific operations efficiently.Designed with an intuitive interface and optimized logic for accurate real-time calculations.',
     img: 'assets/projects/calculator.png',
     tech: ['HTML', 'CSS', 'JavaScript'],
-    duration: 'Aug 2024-Sep 2024',
+    duration: 'Nov 2025-Nov 2025',
     demo: 'https://calculater-pi-three.vercel.app/', code: 'https://github.com/aravinthsamyt/calculater'
   },
 ];
@@ -324,23 +324,23 @@ const achievements = [
   {
     name: 'Electroathon Hackathon',
     location: 'EEE Department KEC',
-    date: 'May 2025',
-    year: 2025,
+    date: 'Feb 2026',
+    year: 2026,
     img: 'assets/EEEhackathon.jpeg',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7431355310453460992/'
   },
   {
     name: '30 hrs Hackathon',
     location: 'ECE Department KEC',
-    date: 'June 2025',
-    year: 2025,
+    date: 'Feb 2026',
+    year: 2026,
     img: 'assets/ECEhackathon.jpeg',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7436095828579991553/'
   },{
-    name: 'MERN Stack Mastery',
-    location: 'Coursera',
-    date: 'July 2025',
-    year: 2025,
+    name: 'Loading...',
+    location: 'Loading...',
+    date: 'Aug 2026',
+    year: 2026,
     img: 'assets/loading1.jpeg',
     linkedin: ''
   }
