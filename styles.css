@@ -741,6 +741,39 @@ body:not(.dark) .hero-desc {
    height: 100%; 
    object-fit: cover; 
    border-radius: 1.5rem; }
+
+/* Light-mode: hero image frame split-color border (green -> gold) */
+body:not(.dark) .image-frame {
+  padding: .38rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(rgb(77, 144, 114), rgb(212, 137, 193)) padding-box,
+    linear-gradient(135deg,
+      rgb(55, 122, 107) 0%,
+      rgb(92, 145, 114) 30%,
+      rgb(149, 156, 115) 50%,
+      rgb(188, 172, 128) 70%,
+      rgb(218, 188, 115) 100%
+    ) border-box;
+  box-shadow: 0 12px 30px rgba(36, 132, 111, 0.06);
+}
+
+/* Light-mode: status floating card (bottom-left) — green border + glow */
+body:not(.dark) .floating-card.bottom-left {
+  border: 2px solid rgb(55, 122, 107);
+  background: hsla(0, 0%, 100%, 0.92);
+  box-shadow:0 1px 30px rgba(6, 90, 73, 0.18);
+  color: rgb(18, 18, 17);
+}
+
+/* Light-mode: months_exp floating card (top-right) — golden border + glow */
+body:not(.dark) .floating-card.top-right {
+  border: 2px solid rgb(225, 172, 212);
+  background: hsla(0, 0%, 100%, 0.95);
+  box-shadow: 0 1px 30px rgba(228, 163, 0, 0.18);
+  color: rgb(18, 18, 17);
+}
 .floating-card {
   position: absolute; 
   padding: .75rem 1rem; 
