@@ -1,4 +1,4 @@
-# Alex Carter — MERN Developer Portfolio (HTML/CSS/JS)
+# Aravinthsamy — Fullstack Developer Portfolio (HTML/CSS/JS)
 
 Pure static version of the portfolio. No frameworks, no build step.
 
